@@ -1,0 +1,120 @@
+wandb_version: 1
+
+_wandb:
+  desc: null
+  value:
+    python_version: 3.9.19
+    cli_version: 0.16.6
+    framework: torch
+    is_jupyter_run: false
+    is_kaggle_kernel: false
+    start_time: 1722283442.0
+    t:
+      1:
+      - 1
+      - 41
+      - 48
+      - 55
+      2:
+      - 1
+      - 41
+      - 48
+      - 55
+      3:
+      - 2
+      - 7
+      - 13
+      - 23
+      4: 3.9.19
+      5: 0.16.6
+      8:
+      - 3
+      - 5
+      13: windows-amd64
+    m:
+    - 1: dice
+      6:
+      - 3
+      7:
+      - 2
+    - 1: sensitivity
+      6:
+      - 3
+      7:
+      - 2
+model_name:
+  desc: null
+  value: unet
+loss_function:
+  desc: null
+  value: DiceCE
+lambda_ce:
+  desc: null
+  value: 0.5
+class_weights:
+  desc: null
+  value:
+  - 0.25
+  - 0.75
+image_size:
+  desc: null
+  value: 128
+in_channels:
+  desc: null
+  value: 3
+out_channels:
+  desc: null
+  value: 2
+num_epochs:
+  desc: null
+  value: 100
+batch_size:
+  desc: null
+  value: 64
+learning_rate:
+  desc: null
+  value: 0.0001
+learning_rate_decay_factor:
+  desc: null
+  value: 0.5
+learning_rate_decay_frequency:
+  desc: null
+  value: 10
+weight_decay:
+  desc: null
+  value: 0.01
+shuffle:
+  desc: null
+  value: true
+seed:
+  desc: null
+  value: 42
+transforms:
+  desc: null
+  value:
+    general:
+    - name: Transposed
+      params:
+        keys:
+        - image
+        - label
+        indices:
+        - 2
+        - 0
+        - 1
+    - name: ToTensord
+    - name: EnsureTyped
+      params:
+        keys:
+        - image
+        - label
+        dtype: float32
+    - name: Resized
+      params:
+        keys:
+        - image
+        - label
+        spatial_size:
+        - 128
+        - 128
+    train: null

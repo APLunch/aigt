@@ -1,0 +1,31 @@
+2024-07-29 15:57:16,364 INFO    MainThread:26628 [wandb_setup.py:_flush():76] Current SDK version is 0.16.6
+2024-07-29 15:57:16,364 INFO    MainThread:26628 [wandb_setup.py:_flush():76] Configure stats pid to 26628
+2024-07-29 15:57:16,364 INFO    MainThread:26628 [wandb_setup.py:_flush():76] Loading settings from C:\Users\mike\.config\wandb\settings
+2024-07-29 15:57:16,364 INFO    MainThread:26628 [wandb_setup.py:_flush():76] Loading settings from C:\dev\aigt\UltrasoundSegmentation\wandb\settings
+2024-07-29 15:57:16,364 INFO    MainThread:26628 [wandb_setup.py:_flush():76] Loading settings from environment variables: {}
+2024-07-29 15:57:16,364 INFO    MainThread:26628 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program_relpath': 'UltrasoundSegmentation\\train.py', 'program_abspath': 'C:\\dev\\aigt\\UltrasoundSegmentation\\train.py', 'program': 'C:\\dev\\aigt\\UltrasoundSegmentation\\train.py'}
+2024-07-29 15:57:16,364 INFO    MainThread:26628 [wandb_setup.py:_flush():76] Applying login settings: {}
+2024-07-29 15:57:16,364 INFO    MainThread:26628 [wandb_setup.py:_flush():76] Applying login settings: {'api_key': '***REDACTED***'}
+2024-07-29 15:57:16,364 INFO    MainThread:26628 [wandb_setup.py:_flush():76] Applying login settings: {}
+2024-07-29 15:57:16,364 INFO    MainThread:26628 [wandb_init.py:_log_setup():521] Logging user logs to C:\dev\aigt\UltrasoundSegmentation\wandb\run-20240729_155716-d33st633\logs\debug.log
+2024-07-29 15:57:16,364 INFO    MainThread:26628 [wandb_init.py:_log_setup():522] Logging internal logs to C:\dev\aigt\UltrasoundSegmentation\wandb\run-20240729_155716-d33st633\logs\debug-internal.log
+2024-07-29 15:57:16,364 INFO    MainThread:26628 [wandb_init.py:init():561] calling init triggers
+2024-07-29 15:57:16,364 INFO    MainThread:26628 [wandb_init.py:init():568] wandb.init called with sweep_config: {}
+config: {}
+2024-07-29 15:57:16,364 INFO    MainThread:26628 [wandb_init.py:init():611] starting backend
+2024-07-29 15:57:16,364 INFO    MainThread:26628 [wandb_init.py:init():615] setting up manager
+2024-07-29 15:57:16,364 INFO    MainThread:26628 [backend.py:_multiprocessing_setup():105] multiprocessing start_methods=spawn, using: spawn
+2024-07-29 15:57:16,364 INFO    MainThread:26628 [wandb_init.py:init():623] backend started and connected
+2024-07-29 15:57:16,380 INFO    MainThread:26628 [wandb_init.py:init():715] updated telemetry
+2024-07-29 15:57:16,411 INFO    MainThread:26628 [wandb_init.py:init():748] communicating run to backend with 90.0 second timeout
+2024-07-29 15:57:16,708 INFO    MainThread:26628 [wandb_run.py:_on_init():2357] communicating current version
+2024-07-29 15:57:16,802 INFO    MainThread:26628 [wandb_run.py:_on_init():2366] got version response upgrade_message: "wandb version 0.17.5 is available!  To upgrade, please run:\n $ pip install wandb --upgrade"
+
+2024-07-29 15:57:16,802 INFO    MainThread:26628 [wandb_init.py:init():799] starting run threads in backend
+2024-07-29 15:57:17,561 INFO    MainThread:26628 [wandb_run.py:_console_start():2335] atexit reg
+2024-07-29 15:57:17,561 INFO    MainThread:26628 [wandb_run.py:_redirect():2190] redirect: wrap_raw
+2024-07-29 15:57:17,561 INFO    MainThread:26628 [wandb_run.py:_redirect():2255] Wrapping output streams.
+2024-07-29 15:57:17,561 INFO    MainThread:26628 [wandb_run.py:_redirect():2280] Redirects installed.
+2024-07-29 15:57:17,561 INFO    MainThread:26628 [wandb_init.py:init():842] run started, returning control to user process
+2024-07-29 15:57:17,561 INFO    MainThread:26628 [wandb_run.py:_config_callback():1347] config_cb None None {'model_name': 'unet', 'loss_function': 'DiceCE', 'lambda_ce': 0.5, 'class_weights': [0.25, 0.75], 'image_size': 128, 'in_channels': 1, 'out_channels': 2, 'num_epochs': 100, 'batch_size': 64, 'learning_rate': 0.0001, 'learning_rate_decay_factor': 0.5, 'learning_rate_decay_frequency': 10, 'weight_decay': 0.01, 'shuffle': True, 'seed': 42, 'transforms': {'general': [{'name': 'Transposed', 'params': {'keys': ['image', 'label'], 'indices': [2, 0, 1]}}, {'name': 'ToTensord'}, {'name': 'EnsureTyped', 'params': {'keys': ['image', 'label'], 'dtype': 'float32'}}, {'name': 'Resized', 'params': {'keys': ['image', 'label'], 'spatial_size': [128, 128]}}], 'train': None}}
+2024-07-29 15:57:40,491 WARNING MsgRouterThr:26628 [router.py:message_loop():77] message_loop has been closed

@@ -1,0 +1,44 @@
+2024-07-29 16:02:01,784 [INFO    ]  Saved config file to G:\Shared drives\cstech\experiments\098_us_segmentation_unet\2019_SpineUs-Queens_output\unet_DiceCE_2024-07-29_16-02-00\train_config.yaml.
+2024-07-29 16:02:01,802 [INFO    ]  Using device cuda.
+2024-07-29 16:02:03,028 [INFO    ]  Epoch 1/100
+C:\Miniconda3\envs\aigt\lib\site-packages\monai\utils\deprecate_utils.py:221: FutureWarning: monai.losses.dice DiceCELoss.__init__:ce_weight: Argument `ce_weight` has been deprecated since version 1.2. It will be removed in version 1.4. please use `weight` instead.
+  warn_deprecated(argname, msg, warning_category)
+C:\Miniconda3\envs\aigt\lib\site-packages\torch\optim\lr_scheduler.py:60: UserWarning: The verbose parameter is deprecated. Please use get_last_lr() to access the learning rate.
+  warnings.warn(
+  0%|                                                                                                                                                                                                                                                                                                | 0/39 [00:13<?, ?it/s]
+Traceback (most recent call last):
+  File "C:\dev\aigt\UltrasoundSegmentation\train.py", line 553, in <module>
+    main(args)
+  File "C:\dev\aigt\UltrasoundSegmentation\train.py", line 371, in main
+    outputs = model(inputs)
+  File "C:\Miniconda3\envs\aigt\lib\site-packages\torch\nn\modules\module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "C:\Miniconda3\envs\aigt\lib\site-packages\torch\nn\modules\module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Miniconda3\envs\aigt\lib\site-packages\monai\networks\nets\unet.py", line 300, in forward
+    x = self.model(x)
+  File "C:\Miniconda3\envs\aigt\lib\site-packages\torch\nn\modules\module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "C:\Miniconda3\envs\aigt\lib\site-packages\torch\nn\modules\module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Miniconda3\envs\aigt\lib\site-packages\torch\nn\modules\container.py", line 219, in forward
+    input = module(input)
+  File "C:\Miniconda3\envs\aigt\lib\site-packages\torch\nn\modules\module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "C:\Miniconda3\envs\aigt\lib\site-packages\torch\nn\modules\module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Miniconda3\envs\aigt\lib\site-packages\monai\networks\blocks\convolutions.py", line 316, in forward
+    res: torch.Tensor = self.residual(x)  # create the additive residual from x
+  File "C:\Miniconda3\envs\aigt\lib\site-packages\torch\nn\modules\module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "C:\Miniconda3\envs\aigt\lib\site-packages\torch\nn\modules\module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Miniconda3\envs\aigt\lib\site-packages\torch\nn\modules\conv.py", line 458, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+  File "C:\Miniconda3\envs\aigt\lib\site-packages\torch\nn\modules\conv.py", line 454, in _conv_forward
+    return F.conv2d(input, weight, bias, self.stride,
+  File "C:\Miniconda3\envs\aigt\lib\site-packages\monai\data\meta_tensor.py", line 282, in __torch_function__
+    ret = super().__torch_function__(func, types, args, kwargs)
+  File "C:\Miniconda3\envs\aigt\lib\site-packages\torch\_tensor.py", line 1437, in __torch_function__
+    ret = func(*args, **kwargs)
+RuntimeError: Given groups=1, weight of size [16, 1, 3, 3], expected input[64, 3, 128, 128] to have 1 channels, but got 3 channels instead

@@ -51,7 +51,7 @@ input_dir = args.input_dir
 data_files = []
 for seg_filename in os.listdir(input_dir):
     if (seg_filename.endswith(".npy") or seg_filename.endswith(".npz")) and "_segmentation" in seg_filename:
-        data_files.append(os.path.join(input_dir, seg_filename))
+        data_files.append(seg_filename)
 
 print(f"Found {len(data_files)} segmentation files.")
 
@@ -69,7 +69,8 @@ with open(os.path.join(args.output_dir, "prepare_data_config.yaml"), "w") as f:
 # Read input files, process and filter data, and save new data to disk
 
 for seg_filename in tqdm(data_files):
-    data = np.load(seg_filename)
+    seg_file_abs_path = os.path.join(input_dir, seg_filename)
+    data = np.load(seg_file_abs_path)
     if isinstance(data, np.lib.npyio.NpzFile):
         data = data[data.files[0]]
     logging.info(f"Loaded {seg_filename} with shape {data.shape} and value range {np.min(data)} - {np.max(data)}")
@@ -77,6 +78,7 @@ for seg_filename in tqdm(data_files):
     # Filter data. Keep only segmented ultrasound images with indices stored in _indices.npy file.
 
     indices_filename = seg_filename.replace("_segmentation", "_indices")
+    indices_filename = os.path.join(input_dir, indices_filename)
     if os.path.exists(indices_filename):
         indices = np.load(indices_filename)
         if isinstance(indices, np.lib.npyio.NpzFile):
@@ -86,6 +88,7 @@ for seg_filename in tqdm(data_files):
         data = data[indices, :, :, :]
         logging.info(f"Filtered data to shape {data.shape}")
     else:
+        indices = np.arange(data.shape[0])
         logging.info("No indices file found. Keeping all data.")
 
     # Resize segmentation images channel by channel.
@@ -107,14 +110,18 @@ for seg_filename in tqdm(data_files):
     # Find matching ultrasound file and read ultrasound data
 
     ultrasound_filename = seg_filename.replace("_segmentation", "_ultrasound")
+    ultrasound_filename = os.path.join(input_dir, ultrasound_filename)
     if not os.path.exists(ultrasound_filename):
-        logging.error(f"Could not find matching ultrasound file for {seg_filename}")
+        logging.error(f"Could not find matching ultrasound file for {ultrasound_filename}")
         sys.exit(1)
     
     ultrasound_data = np.load(ultrasound_filename)
     if isinstance(ultrasound_data, np.lib.npyio.NpzFile):
         ultrasound_data = ultrasound_data[ultrasound_data.files[0]]
     logging.info(f"Loaded {ultrasound_filename} with shape {ultrasound_data.shape} and value range {np.min(ultrasound_data)} - {np.max(ultrasound_data)}")
+    # Map ultrasound data type from 0-1 to 0-255
+    ultrasound_data = (ultrasound_data * 255).astype(np.uint8)
+    logging.info(f"Data type of {ultrasound_filename}: {ultrasound_data.dtype}")
 
     # Keep only ultrasound images that have a corresponding segmentation image, with preceding ultrasound frames as requested in separate channels
     # If there are not enough preceding ultrasound frames, pad extra channels with zeros.
@@ -143,6 +150,7 @@ for seg_filename in tqdm(data_files):
     # Load transform file and keep only the transforms that correspond to the segmented ultrasound image
 
     transform_filename = seg_filename.replace("_segmentation", "_transform")
+    transform_filename = os.path.join(input_dir, transform_filename)
     if os.path.exists(transform_filename):
         transform_data = np.load(transform_filename)
         if isinstance(transform_data, np.lib.npyio.NpzFile):
@@ -155,12 +163,12 @@ for seg_filename in tqdm(data_files):
         np.save(output_filename, transform_data)
         logging.info(f"Saved {output_filename} with shape {transform_data.shape}")
     else:
-        logging.info(f"No transform file found for {seg_filename}")
+        logging.info(f"No transform file found for {transform_filename}")
 
-    # Copy indices file to output folder
-
+    # Copy indices file to output folder if it exists
     output_filename = os.path.join(args.output_dir, os.path.basename(indices_filename))
-    with open(indices_filename, "rb") as f:
-        with open(output_filename, "wb") as f_out:
-            f_out.write(f.read())
+    if os.path.exists(indices_filename):
+        with open(indices_filename, "rb") as f:
+            with open(output_filename, "wb") as f_out:
+                f_out.write(f.read())
     logging.info(f"Copied {indices_filename} to {output_filename}")

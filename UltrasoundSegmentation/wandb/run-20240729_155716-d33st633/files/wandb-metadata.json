@@ -1,0 +1,57 @@
+{
+    "os": "Windows-10-10.0.22631-SP0",
+    "python": "3.9.19",
+    "heartbeatAt": "2024-07-29T19:57:16.880283",
+    "startedAt": "2024-07-29T19:57:16.364661",
+    "docker": null,
+    "cuda": null,
+    "args": [
+        "--train-data-folder=G:\\Shared drives\\cstech\\experiments\\098_us_segmentation_unet\\2019_SpineUs-Queens_sliced",
+        "--output-dir=G:\\Shared drives\\cstech\\experiments\\098_us_segmentation_unet\\2019_SpineUs-Queens_output",
+        "--val-data-folder=G:\\Shared drives\\cstech\\experiments\\098_us_segmentation_unet\\2019_SpineUs-Queens_sliced_val"
+    ],
+    "state": "running",
+    "program": "C:\\dev\\aigt\\UltrasoundSegmentation\\train.py",
+    "codePathLocal": "train.py",
+    "codePath": "UltrasoundSegmentation\\train.py",
+    "git": {
+        "remote": "https://github.com/SlicerIGT/aigt.git",
+        "commit": "231a7a4adeceb100723af48f34c734ed4d7b8858"
+    },
+    "email": "60408626+APLunch@users.noreply.github.com",
+    "root": "C:/dev/aigt",
+    "host": "CS_Mike",
+    "username": "mike",
+    "executable": "C:\\Miniconda3\\envs\\aigt\\python.exe",
+    "cpu_count": 14,
+    "cpu_count_logical": 20,
+    "cpu_freq": {
+        "current": 2400.0,
+        "min": 0.0,
+        "max": 2400.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 2400.0,
+            "min": 0.0,
+            "max": 2400.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 928.9101524353027,
+            "used": 388.60155868530273
+        }
+    },
+    "gpu": "NVIDIA GeForce RTX 4050 Laptop GPU",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA GeForce RTX 4050 Laptop GPU",
+            "memory_total": 6439305216
+        }
+    ],
+    "memory": {
+        "total": 31.67876434326172
+    }
+}
